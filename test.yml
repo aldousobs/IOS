@@ -1,5 +1,5 @@
 ---
-- hosts: ecs-3hk-ios-05
+- hosts: Cisco Router
   connection: local
   vars:
     cli:
