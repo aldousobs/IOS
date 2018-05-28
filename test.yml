@@ -1,5 +1,5 @@
 ---
-- hosts: '"Cisco Router"'
+- hosts: Cisco_Router
   connection: local
   vars:
     cli:
