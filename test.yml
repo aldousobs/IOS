@@ -1,18 +1,14 @@
 ---
 - hosts: 192.168.0.105
-  gather_facts: no
+  gather_facts: true
   connection: local
  
   tasks:
-  - name: SYS | Define provider
-    set_fact:
-      provider:
-      username: admin
-      password: 1qaz!QAZ
-
-  - name: IOS | Show clock
-    ios_command:
-      provider: "{{ provider }}"
-      commands:
-        - show clock
-    register: clock
+   - name: show run 
+   ios_command:
+   commands:
+     - show run 
+     host: 192.168.0.105
+     username: admin
+     password: 1qaz!QAZ
+     register: config
