@@ -1,5 +1,5 @@
 ---
-- hosts: switches
+- hosts: ecs-3hk-ios-05
   connection: local
   vars:
     cli:
@@ -13,6 +13,3 @@
           commands: "show version"
           provider: "{{ cli }}"
         register: show_version
-
-      - name: debug me
-        debug: var=show_version
