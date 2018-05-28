@@ -1,5 +1,5 @@
 ---
-- hosts: Cisco_Router
+- hosts: 192.168.0.105
   gather_facts: no
   connection: local
  
