@@ -5,10 +5,10 @@
  
   tasks:
    - name: show run 
-   ios_command:
-    commands:
-     - show run 
-     host: "{{ ansible_host }}"
-     username: admin
-     password: 1qaz!QAZ
-     register: config
+     ios_command:
+       commands:
+       - show run 
+       host: "{{ ansible_host }}"
+       username: admin
+       password: 1qaz!QAZ
+       register: config
