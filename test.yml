@@ -1,5 +1,5 @@
 ---
-- hosts: ios_devices
+- hosts: Cisco_Router
   gather_facts: no
   connection: local
  
