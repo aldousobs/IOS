@@ -3,15 +3,14 @@
 - hosts: 192.168.1.105
   gather_facts: no
 
-  tasks:
-   - name: crawl config file
-     local_action:
-       module: ios_command
-       authorize: yes
-       auth_pass: 1qaz!QAZ
-       username: admin
-       password: 1qaz!QAZ
-       host: 192.168.1.105
-       commands:
-         - show run
-     register: result
+vars:
+  cli:
+    host: “{{ inventory_hostname }}”
+    username: admin
+    password: 1qaz!QAZ
+
+tasks:
+  - name: run show version
+    ios_command: 
+      commands: show version
+      provider: “{{ cli }}”
