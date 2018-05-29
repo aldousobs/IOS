@@ -10,7 +10,6 @@
         host: 192.168.1.105
         username: admin
         password: 1qaz!QAZ
-        register: show_version
 
     - name: print the show version output
       debug: var=show_version
