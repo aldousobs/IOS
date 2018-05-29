@@ -1,21 +1,31 @@
-+++
-- name: Run traceroute commands
-  hosts: cisco-devices
-  gather_facts: false
-  remote_user: admin
-  
-  vars:
-    loopbacks: {
-    "R1": "192.168.3.105",
-    }
-  
+---
+- hosts: cisco        # インベントリファイルで定義したciscoグループが操作対象
+  gather_facts: no
+  connection: local
+
   tasks:
+    - name: change password
+      ios_config:
+        lines:
+          - username ope password opeope   # 実行させたいコマンド
+        provider: "{{ cli }}"   # 後で定義する接続情報を辞書で渡す
+      register: result          # 結果をデバッグ表示するため変数resultに登録
+    - name: DEBUG
+      debug: var=result         # 結果デバッグ
 
-    - name: run traceroute to every other host
-      raw: traceroute {{ item.value }} source Loopback0 probe 1 numeric
-      when: item.key != inventory_hostname
-      with_dict: loopbacks
-      register: trace_result
+    - name: save config
+      ios_command:
+        commands:
+          - write memory        # running-configの保存
+        provider: "{{ cli }}"
+      register: result
+    - name: DEBUG
+      debug: var=result
 
-#    - name: Debug registered variables
-#      debug: var=trace_result
+  vars:
+    cli:   # 接続情報を辞書で定義（usernameとそれ以降はインベントリファイルから取得定義）
+      host:     "{{ inventory_hostname }}"    # ホスト対象ホスト
+      username: "{{ ansible_user }}"          # ログインユーザー
+      password: "{{ ansible_password }}"      # ログインパスワード
+      authorize: true                         # 特権モードに移行
+      auth_pass: "{{ cisco_enable_secret }}"  # 特権パスワード
