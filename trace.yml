@@ -5,11 +5,12 @@
 
   tasks:
     - name: run show version
+      host: 192.168.1.105
+      username: admin
+      password: 1qaz!QAZ 
       ios_command:
         commands: show version
-      wait_for:
-        - result[0] contains IOS        
-        host: 192.168.1.105
-        username: admin
-        password: 1qaz!QAZ
+        wait_for:
+          - result[0] contains IOS        
+
 
