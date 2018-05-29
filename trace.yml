@@ -1,0 +1,21 @@
++++
+- name: Run traceroute commands
+  hosts: cisco-devices
+  gather_facts: false
+  remote_user: admin
+  
+  vars:
+    loopbacks: {
+    "R1": "192.168.3.105",
+    }
+  
+  tasks:
+
+    - name: run traceroute to every other host
+      raw: traceroute {{ item.value }} source Loopback0 probe 1 numeric
+      when: item.key != inventory_hostname
+      with_dict: loopbacks
+      register: trace_result
+
+#    - name: Debug registered variables
+#      debug: var=trace_result
