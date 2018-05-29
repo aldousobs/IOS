@@ -1,5 +1,5 @@
 ---
-- hosts: localhost    # 実機を対象としない。ここではダミー的に localhost とする
+- hosts: all
   gather_facts: no
   connection: local
 
