@@ -11,7 +11,7 @@
       - name: run show version
         ios_command:
           commands: "show version"
-          provider: "cli"
+          provider: "{{ cli }}"
         register: show_version
 
       - name: print the show version output
