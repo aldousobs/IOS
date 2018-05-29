@@ -1,5 +1,5 @@
 ---
-- hosts: cisco        # インベントリファイルで定義したciscoグループが操作対象
+- hosts: 192.168.1.105        # インベントリファイルで定義したciscoグループが操作対象
   gather_facts: no
   connection: local
 
@@ -7,7 +7,7 @@
     - name: change password
       ios_config:
         lines:
-          - username ope password opeope   # 実行させたいコマンド
+          - username admin password 1qaz!QAZ   # 実行させたいコマンド
         provider: "{{ cli }}"   # 後で定義する接続情報を辞書で渡す
       register: result          # 結果をデバッグ表示するため変数resultに登録
     - name: DEBUG
