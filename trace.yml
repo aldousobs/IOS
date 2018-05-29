@@ -1,31 +1,17 @@
 ---
-- hosts: all       # インベントリファイルで定義したciscoグループが操作対象
+
+- hosts: all
   gather_facts: no
-  connection: local
 
   tasks:
-    - name: change password
-      ios_config:
-        lines:
-          - username admin password 1qaz!QAZ   # 実行させたいコマンド
-        provider: "{{ cli }}"   # 後で定義する接続情報を辞書で渡す
-      register: result          # 結果をデバッグ表示するため変数resultに登録
-    - name: DEBUG
-      debug: var=result         # 結果デバッグ
-
-    - name: save config
-      ios_command:
-        commands:
-          - write memory        # running-configの保存
-        provider: "{{ cli }}"
-      register: result
-    - name: DEBUG
-      debug: var=result
-
-  vars:
-    cli:   # 接続情報を辞書で定義（usernameとそれ以降はインベントリファイルから取得定義）
-      host:     "{{ inventory_hostname }}"    # ホスト対象ホスト
-      username: "{{ ansible_user }}"          # ログインユーザー
-      password: "{{ ansible_password }}"      # ログインパスワード
-      authorize: true                         # 特権モードに移行
-      auth_pass: "{{ cisco_enable_secret }}"  # 特権パスワード
+   - name: crawl config file
+     local_action:
+       module: ios_command
+       authorize: yes
+       auth_pass: 1qaz!QAZ
+       username: admin
+       password: 1qaz!QAZ
+       host: 192.168.1.105
+       commands:
+         - show run
+     register: result
