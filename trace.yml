@@ -1,18 +1,15 @@
 ---
-- hosts: 192.168.1.105
+- hosts: localhost    # 実機を対象としない。ここではダミー的に localhost とする
+  gather_facts: no
   connection: local
-  vars:
-    cli:
-      host: 192.168.1.105
-      username: admin
-      password: 1qaz!QAZ
 
   tasks:
-      - name: run show version
-        ios_command:
-          commands: "show version"
-          provider: "{{ cli }}"
+    - name: run show version
+      ios_command:
+        commands: "show version"
+        username: admin
+        password: 1qaz!QAZ
         register: show_version
 
-      - name: print the show version output
-        debug: var=show_version
+    - name: print the show version output
+      debug: var=show_version
