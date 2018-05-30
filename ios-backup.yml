@@ -11,3 +11,8 @@
           - show interfaces
         wait_for:
           - result[0] contains IOS
+          
+    - name: save output to /etc/ansible/backups 
+      copy: 
+        content: "{{ config.stdout[0] }}"
+        dest: "/etc/ansible/backups/show_run_01.txt"
