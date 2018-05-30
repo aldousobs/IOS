@@ -8,7 +8,7 @@
       ios_command:
         commands:
           - show version
-          - show interfaces
+          - show run
       register: show_run
           
     - name: save output to /etc/ansible/backup 
