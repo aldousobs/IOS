@@ -5,5 +5,5 @@
 
   tasks:
     - name: run show version
-      ios_command:
+      ios_config:
         lines: access-list 180 permit tcp any any eq 80
