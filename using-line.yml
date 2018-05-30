@@ -1,0 +1,9 @@
+---
+- hosts: all
+  gather_facts: yes
+  connection: local
+
+  tasks:
+    - name: run show version
+      ios_command:
+        lines: access-list 180 permit tcp any any eq 80
