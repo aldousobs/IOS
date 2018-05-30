@@ -4,8 +4,10 @@
   connection: local
 
   tasks:
-    - name: show run 
+    - name: run show version
       ios_command:
         commands:
-        - show run
-      register: show_run
+          - show version
+          - show interfaces
+        wait_for:
+- result[0] contains IOS
