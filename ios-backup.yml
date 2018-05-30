@@ -9,7 +9,7 @@
         commands:
           - show version
           - show interfaces
-        register: show_run
+      register: show_run
           
     - name: save output to /etc/ansible/backup 
       copy: 
