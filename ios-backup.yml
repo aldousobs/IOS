@@ -10,4 +10,4 @@
           - show version
           - show interfaces
         wait_for:
-- result[0] contains IOS
+          - result[0] contains IOS
