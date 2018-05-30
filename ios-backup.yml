@@ -9,7 +9,7 @@
         commands:
         - show run 
 
-    - name: save output to /etc/ansible/backups 
+    - name: save output to /etc/ansible/backup
       copy: 
         content: "{{ config.stdout[0] }}"
         dest: /tmp/show_run_01.txt
