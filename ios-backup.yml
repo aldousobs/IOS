@@ -12,7 +12,7 @@
       register: show_run
       
     - name: get timestamp
-      command: date +%Y%m%d
+      command: date +%Y%m%d-%H:%M:%S
       register: timestamp
       
     - name: save output to /etc/ansible/backup 
