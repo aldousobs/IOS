@@ -7,8 +7,11 @@
     - name: show run 
       ios_command:
         commands:
-        - show run 
-
+        - show run
+      register: show_run
+    - debug:
+        msg: "{{ show_run }}"
+        
     - name: save output to /etc/ansible/backup
       copy: 
         content: "{{ config.stdout[0] }}"
