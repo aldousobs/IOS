@@ -9,7 +9,3 @@
         commands:
         - show run
       register: show_run
-      
-    - debug:
-      msg: "{{ show_run.stdout[0] }}"
-
