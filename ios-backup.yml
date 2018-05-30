@@ -9,7 +9,7 @@
         commands:
         - show run
       register: show_run
+      
+    - debug:
+      msg: "{{ show_run.stdout[0] }}"
 
-    - copy:
-        content: "{{ show_run.stdout[0] }}"
-        dest: /tmp/show_run_01.txt
