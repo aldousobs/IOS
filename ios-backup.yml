@@ -11,8 +11,7 @@
       register: show_run
     - debug:
         msg: "{{ show_run }}"
-        
-    - name: save output to /etc/ansible/backup
-      copy: 
-        content: "{{ config.stdout[0] }}"
-        dest: /tmp/show_run_01.txt
+
+    - copy:
+        content: "{{ show_run.stdout[0] }}"
+        dest: "/tmp/show_run_01.txt"
