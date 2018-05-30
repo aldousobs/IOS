@@ -4,13 +4,12 @@
   connection: local
 
   tasks:
-   - name: show run 
-   ios_command:
-   commands:
-     - show run 
-     host: 192.168.1.105
- 
-  - name: save output to /etc/ansible/backups 
-  copy: 
-  content: "{{ config.stdout[0] }}"
-dest: "/etc/ansible/backups/show_run_01.txt"
+    - name: show run 
+      ios_command:
+      commands:
+      - show run 
+
+    - name: save output to /etc/ansible/backups 
+      copy: 
+      content: "{{ config.stdout[0] }}"
+      dest: "/etc/ansible/backups/show_run_01.txt"
