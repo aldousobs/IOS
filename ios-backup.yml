@@ -18,4 +18,4 @@
     - name: save output to /etc/ansible/backup 
       copy: 
         content: "{{ show_run.stdout[0] }}"
-        dest: "/etc/ansible/backup/show_run_01.txt"
+        dest: "/etc/ansible/backup/show_run_{{ timestamp.stdout }}.txt"
