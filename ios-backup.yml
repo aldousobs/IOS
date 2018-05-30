@@ -10,7 +10,11 @@
           - show running-config
           - show interface
       register: show_run
-          
+      
+    - name: get timestamp
+      command: date +%Y%m%d
+      register: timestamp
+      
     - name: save output to /etc/ansible/backup 
       copy: 
         content: "{{ show_run.stdout[0] }}"
