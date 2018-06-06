@@ -9,4 +9,5 @@
         parents: "ip access-list extended TEST-ACL"
         lines:
           - deny icmp any any
+          - permit ip any any
         before: "no ip access-list extended TEST-ACL"
