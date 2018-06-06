@@ -7,4 +7,5 @@
   tasks:
     - name: Adding Access List
       ios_config:
+        lines: no access-list 100
         lines: access-list 100 permit ip any any
