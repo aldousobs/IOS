@@ -8,6 +8,5 @@
       ios_config:
         parents: "ip access-list extended TEST-ACL"
         lines:
-          - permit tcp any any eq telnet
-          - permit tcp any any eq www
+          - deny icmp any any
         before: "no ip access-list extended TEST-ACL"
