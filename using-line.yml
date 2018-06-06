@@ -11,3 +11,5 @@
           - deny icmp any any
           - permit ip any any
         before: "no ip access-list extended TEST-ACL"
+        match: exact
+        replace: block
