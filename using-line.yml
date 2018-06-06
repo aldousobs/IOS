@@ -6,4 +6,5 @@
   tasks:
     - name: Adding Access List
       ios_config:
-        lines: access-list 180 permit tcp any any eq 80
+        lines: access-list 100 deny icmp any any
+        lines: access-list 100 permit ip any any
