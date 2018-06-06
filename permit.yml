@@ -1,0 +1,11 @@
+
+---
+- hosts: all
+  gather_facts: yes
+  connection: local
+
+  tasks:
+    - name: Adding Access List
+      ios_config:
+        lines: access-list 100 permit icmp any any
+        lines: access-list 100 permit ip any any
