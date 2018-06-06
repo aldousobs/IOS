@@ -6,5 +6,8 @@
   tasks:
     - name: Adding Access List
       ios_config:
-        lines: access-list 100 deny icmp any any
-      before: "no ip access-list 100"
+        parents: "ip access-list extended TEST-ACL"
+        lines:
+          - permit tcp any any eq smtp
+          - permit tcp any any eq www
+        before: "no ip access-list extended TEST-ACL"
