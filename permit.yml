@@ -7,5 +7,10 @@
   tasks:
     - name: Adding Access List
       ios_config:
-        lines: no access-list 100
-        lines: access-list 100 permit ip any any
+        parents: "ip access-list extended TEST-ACL"
+        lines:
+          - permit icmp any any
+          - permit ip any any
+        before: "no ip access-list extended TEST-ACL"
+        match: exact
+replace: block
